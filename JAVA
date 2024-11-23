@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ders ve Soru Seçim Ekranı</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 3rem;
+        }
+
+        .menu {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .button {
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        .question {
+            margin-top: 20px;
+            padding: 20px;
+            font-size: 2rem;
+            color: #444;
+            background-color: #fff;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ders ve Soru Seçimi</h1>
+    <div class="menu">
+        <button class="button" onclick="showQuestion('Matematik')">Matematik</button>
+        <button class="button" onclick="showQuestion('Türkçe')">Türkçe</button>
+        <button class="button" onclick="showQuestion('İngilizce')">İngilizce</button>
+        <button class="button" onclick="showQuestion('Din Kültürü')">Din Kültürü</button>
+    </div>
+    <div id="question" class="question" style="display: none;"></div>
+
+    <script>
+        const questions = {
+            "Matematik": [
+                "6 x 7 kaç eder?",
+                "Bir üçgenin iç açılarının toplamı kaçtır?",
+                "4+4 x 2 işleminin sonucu nedir?"
+            ],
+            "Türkçe": [
+                "Bir cümlede özne nedir?",
+                "Edat ne demektir?",
+                "Türkçe'de kaç tane ünlü harf vardır?"
+            ],
+            "İngilizce": [
+                "What is the past tense of 'go'?",
+                "Translate 'I am a student' into Turkish.",
+                "What does 'beautiful' mean?"
+            ],
+            "Din Kültürü": [
+                "Namazın farzları nelerdir?",
+                "Hac nedir ve nasıl yapılır?",
+                "Allah'ın kaç ismi vardır (Esmaü'l Hüsna)?"
+            ]
+        };
+
+        function showQuestion(subject) {
+            const questionDiv = document.getElementById("question");
+            const randomIndex = Math.floor(Math.random() * questions[subject].length);
+            const selectedQuestion = questions[subject][randomIndex];
+            questionDiv.textContent = `${subject} Soru: ${selectedQuestion}`;
+            questionDiv.style.display = "block";
+        }
+    </script>
+</body>
+</html>
